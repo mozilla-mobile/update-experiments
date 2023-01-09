@@ -9,7 +9,7 @@ inputs:
     required: true
   experimenter-url:
     description: 'URL from which to fetch Nimbus experiments'
-    default: 'https://experimenter.services.mozilla.com/api/v6/experiments/?is_first_run=True'
+    default: 'https://experimenter.services.mozilla.com/api/v6/experiments-first-run/'
     required: false
   app-name:
     description: 'App name by which to filter experiments'
@@ -17,6 +17,9 @@ inputs:
   branch:
     description: 'Remote branch to check diff against'
     required: true
+  package:
+    description: 'Kotlin package to which the file should be written. Only required when the output language is Kotlin'
+    required: false
 outputs:
   changed:
     description: 'The number of files that were modified as part of the script'
@@ -31,3 +34,4 @@ runs:
     - ${{ inputs.experimenter-url }}
     - ${{ inputs.app-name }}
     - ${{ inputs.branch }}
+    - ${{ inputs.package }}
